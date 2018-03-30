@@ -1,7 +1,7 @@
 #!/usr/bin/python3.6
 # -*- coding: UTF-8 -*-
 
-"""CSVColumnMerger_1.0.py:
+"""CSVColumnMerger_1.1.py:
 Source files:
     - CSV file with multiple columns with the same name
 
@@ -28,10 +28,9 @@ def write_column_merged_file():
 
     with open(SOURCE_FILE, 'r', encoding='utf-8') as source_file:
         source_reader = csv.reader(source_file)
-        source_rows = list(source_reader)[1:]
+        next(source_reader, None)
 
-        for row_index in range(len(source_rows)):
-            row = source_rows[row_index]
+        for row in source_reader:
             result_row = setup_result_row(*result_column_names)
             for field in row:
                 if field != "":
