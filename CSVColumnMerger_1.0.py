@@ -15,6 +15,11 @@ RESULT_FILE = 'result.csv'
 
 
 def write_column_merged_file():
+    """def write_column_merged_file()
+    Description: Generates a new CSV file with unique column names.
+    In:          Cap.
+    Out:         RESULT_FILE.
+    """
     source_column_names, result_column_names = extract_column_names()
 
     result_file = open(RESULT_FILE, 'w', encoding='utf-8')
@@ -43,6 +48,12 @@ def write_column_merged_file():
 
 
 def setup_result_row(*result_column_names):
+    """def setup_result_row(*result_column_names)
+    Description: Creates with so many positions as unique column names
+                 in RESULT_FILE filled with empty spaces.
+    In:          List result_column_names.
+    Out:         List result_row.
+    """
     result_row = []
     for column in result_column_names:
         result_row.append("")
@@ -51,6 +62,14 @@ def setup_result_row(*result_column_names):
 
 
 def extract_column_names():
+    """extract_column_names
+    Description: Creates two lists:
+                     - source_column_names: contains the column names of
+                                            SOURCE_FILE
+                     - result_column_names: contains the columns of RESULT_FILE
+    In:          None.
+    Out:         Lists source_column_names and result_column_names.
+    """
     with open(SOURCE_FILE, 'r', encoding='utf-8') as source_file:
         source_reader = csv.reader(source_file)
         source_rows = list(source_reader)
